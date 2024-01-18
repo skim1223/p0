@@ -10,8 +10,8 @@
    - If the sender_type was not a bot, I then retireved the message object's name to respond to the sender with their name.
 - Tell's jokes:
   - I made use of the following API: [Joke's API](https://official-joke-api.appspot.com/random_joke).
-    - With the message "tell me a joke" from a non bot, my bot will send a message with setup line and then 5 seconds later send an additional message with a punchline.
-     - The setup and punchline messages are retrieved through a json object that the api provides.
+  - With the message "tell me a joke" from a non bot, my bot will send a message with setup line and then 5 seconds later send an additional message with a punchline.
+    - The setup and punchline messages are retrieved through a json object that the api provides.
 
 ## How to run my bot:
 1. I registered my bot through using cURL in the command line (where token123 was replaced with my respective access token):
