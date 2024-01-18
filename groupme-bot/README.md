@@ -15,9 +15,9 @@
 
 ## How to run my bot:
 1. I registered my bot through using cURL in the command line (where token123 was replaced with my respective access token):
-  ```bash
-  curl -X POST -d '{"bot": { "name": "Sue P0, "group_id": "98324520"}}' -  'Content-Type: application/json' https://api.groupme.com/v3/bots?token=token123
-  ```
+```bash
+curl -X POST -d '{"bot": { "name": "Sue P0, "group_id": "98324520"}}' - 'Content-Type: application/json' https://api.groupme.com/v3/bots?token=token123
+```
 2. I then activated the virtual environment and ran the bot
 ```bash
 # activate virtual environment
