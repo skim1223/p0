@@ -18,7 +18,7 @@
 ```bash
 curl -X POST -d '{"bot": { "name": "Sue P0, "group_id": "98324520"}}' - 'Content-Type: application/json' https://api.groupme.com/v3/bots?token=token123
 ```
-2. I then activated the virtual environment and ran the bot
+2. I then activated the virtual environment and ran the bot through the following commands:
 ```bash
 # activate virtual environment
 source venv/bin/activate # for mac/linux
