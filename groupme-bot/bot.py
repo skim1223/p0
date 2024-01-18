@@ -33,7 +33,6 @@ def get_group_messages(since_id=None):
         return response.json().get("response", {}).get("messages", [])
     return []
 
-
 def process_message(message):
     """Process and respond to a message."""
     global LAST_MESSAGE_ID
@@ -41,7 +40,23 @@ def process_message(message):
 
     # i.e. responding to a specific message (note that this checks if "hello bot" is anywhere in the message, not just the beginning)
     if "hello bot" in text:
-        send_message("sup")
+        if message["sender_id"] == "49203588":    
+            send_message("sup")
+
+    if "good morning" in text:
+        if message["sender_type"] != "bot":
+            send_message("good morning, " + message["name"])
+
+    if "good night" in text:
+        if message["sender_type"] != "bot":
+            send_message("good night, " + message["name"])
+    
+    if "tell me a joke" in text:
+        if message["sender_type"] != "bot":
+            response = requests.get('https://official-joke-api.appspot.com/random_joke')
+            send_message(response.json()['setup'])
+            time.sleep(5)
+            send_message(response.json()['punchline'])
 
     LAST_MESSAGE_ID = message["id"]
 
@@ -49,11 +64,14 @@ def process_message(message):
 def main():
     global LAST_MESSAGE_ID
     # this is an infinite loop that will try to read (potentially) new messages every 10 seconds, but you can change this to run only once or whatever you want
+    messages = get_group_messages(LAST_MESSAGE_ID)
+    for message in reversed(messages):
+            LAST_MESSAGE_ID = message["id"]
+
     while True:
         messages = get_group_messages(LAST_MESSAGE_ID)
         for message in reversed(messages):
             process_message(message)
-        time.sleep(10)
 
 
 if __name__ == "__main__":
